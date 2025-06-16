@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amornchest Tnutdeachsutatip | NOC Engineer Resume</title>
+    <link href="https://fonts.googleapis.com/css?family=Kanit:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Kanit', Arial, sans-serif;
+            margin: 0;
+            background: #191b22;
+            color: #e9e9eb;
+        }
+        .resume-wrapper {
+            max-width: 900px;
+            margin: 24px auto 30px auto;
+            background: #23263a;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+            padding: 40px 50px 30px 50px;
+            position: relative;
+        }
+        .profile-pic {
+            position: absolute;
+            top: 18px;
+            right: 30px;
+            width: 150px;
+            height: 210px;
+            border-radius: 18px;
+            background: linear-gradient(145deg, #21243a 70%, #38b6ff 100%);
+            border: 4px solid #2b2e42;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 0 0 8px #23263a, 0 8px 22px rgba(56,182,255,0.08);
+            z-index: 2;
+        }
+        .profile-pic .profile-img-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 14px;
+            position: relative;
+            cursor: grab;
+        }
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            border-radius: 12px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            user-select: none;
+            pointer-events: none;
+            transition: filter 0.2s, width 0.2s, height 0.2s;
+            background: #23263a;
+        }
+        .profile-controls {
+            position: absolute;
+            bottom: 8px;
+            right: 12px;
+            z-index: 3;
+            display: flex;
+            gap: 8px;
+            background: rgba(35,38,58,0.88);
+            border-radius: 18px;
+            padding: 3px 10px 3px 10px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.14);
+            transition: opacity 0.2s;
+        }
+        .profile-controls button {
+            background: #38b6ff;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.15s;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .profile-controls button:hover {
+            background: #259be6;
+        }
+        @media (max-width: 720px) {
+            .resume-wrapper {
+                padding: 16px 2vw 14px 2vw;
+                max-width: 98vw;
+            }
+            .profile-pic {
+                top: 8px;
+                right: 8px;
+                width: 82px;
+                height: 120px;
+            }
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .header .dev-icon {
+            font-size: 3rem;
+            color: #38b6ff;
+            background: #26293f;
+            border-radius: 50%;
+            padding: 15px;
+            margin-right: 10px;
+        }
+        .header-text {
+            flex: 1;
+        }
+        .header-text h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.3rem;
+            color: #38b6ff;
+            letter-spacing: 1px;
+        }
+        .header-text h2 {
+            margin: 0 0 5px 0;
+            font-size: 1.3rem;
+            color: #fff;
+            font-weight: 400;
+        }
+        .subtitle {
+            font-size: 0.92rem;
+            color: #b1bed2;
+        }
+        .section {
+            margin-top: 32px;
+        }
+        .section-title {
+            font-size: 1.2rem;
+            color: #38b6ff;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            border-left: 6px solid #38b6ff;
+            padding-left: 10px;
+        }
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px 40px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            color: #e9e9eb;
+            min-width: 220px;
+        }
+        .contact-item i {
+            color: #38b6ff;
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+        }
+        .info-table td {
+            padding: 3px 8px 3px 0;
+            vertical-align: top;
+            font-size: 1rem;
+        }
+        .info-table .label {
+            color: #b1bed2;
+            width: 180px;
+            font-weight: 400;
+        }
+        .info-table .value {
+            color: #e9e9eb;
+        }
+        .skills-list, .soft-skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 30px;
+        }
+        .skills-item, .soft-skills-item {
+            background: #24294a;
+            color: #38b6ff;
+            border-radius: 6px;
+            padding: 4px 14px;
+            font-size: 1.03rem;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .skills-item i, .soft-skills-item i {
+            color: #fff;
+            font-size: 1rem;
+        }
+        .job-block {
+            background: #26293f;
+            border-radius: 10px;
+            padding: 18px 22px 18px 20px;
+            margin-bottom: 10px;
+            border-left: 5px solid #38b6ff;
+        }
+        .job-block .job-title {
+            font-size: 1.06rem;
+            color: #38b6ff;
+            font-weight: 600;
+        }
+        .job-block .job-date {
+            font-size: 0.95rem;
+            color: #b1bed2;
+            margin-bottom: 6px;
+        }
+        .job-block .job-org {
+            color: #fff;
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+        .job-block .job-desc {
+            color: #e9e9eb;
+            font-size: 1rem;
+            margin-top: 5px;
+            margin-left: 13px;
+            line-height: 1.7;
+        }
+        .education-block {
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+        .education-block .ed-univ {
+            color: #38b6ff;
+            font-weight: 600;
+            font-size: 1.08rem;
+        }
+        .education-block .ed-degree {
+            color: #e9e9eb;
+            font-size: 1rem;
+        }
+        .education-block .ed-detail {
+            color: #b1bed2;
+            font-size: 0.95rem;
+            margin-top: 2px;
+        }
+        .other-info-table td {
+            padding: 3px 8px 3px 0;
+            font-size: 0.98rem;
+        }
+        .other-info-table .label {
+            color: #b1bed2;
+            width: 170px;
+        }
+        .other-info-table .value {
+            color: #e9e9eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-wrapper" id="resumeDocument">
+        <div class="profile-pic">
+            <div class="profile-img-container" id="profileImgContainer">
+                <img id="profileImg" src="4953449.png" alt="รูปโปรไฟล์ Amornchest" draggable="false">
+            </div>
+            <div class="profile-controls" id="profileControls">
+                <button id="zoomOutBtn" title="ย่อรูปโปรไฟล์"><i class="fas fa-minus"></i></button>
+                <button id="zoomInBtn" title="ขยายรูปโปรไฟล์"><i class="fas fa-plus"></i></button>
+                <button id="saveProfileBtn" title="บันทึกรูปโปรไฟล์"><i class="fas fa-check"></i></button>
+            </div>
+        </div>
+        <!-- Header -->
+        <div class="header">
+            <span class="dev-icon"><i class="fas fa-laptop-code"></i></span>
+            <div class="header-text">
+                <h1>Amornchest Tnutdeachsutatip</h1>
+                <h2>ตำแหน่ง: NOC Engineer</h2>
+                <div class="subtitle">อมรเชษฐ์ ธนัชเดชสุธาทิพย์</div>
+            </div>
+        </div>
+        <!-- Section: Contact -->
+        <div class="section">
+            <div class="section-title"><i class="fa-solid fa-address-card"></i> ข้อมูลติดต่อ</div>
+            <div class="contact-grid">
+                <div class="contact-item"><i class="fa-solid fa-location-dot"></i>80 ซ.เพชรเกษม2 แขวงวัดท่าพระ เขตบางกอกใหญ่ กทม. 10600</div>
+                <div class="contact-item"><i class="fa-solid fa-phone"></i>083-791-570</div>
+                <div class="contact-item"><i class="fa-solid fa-envelope"></i>k.amornchest@gmail.com</div>
+                <div class="contact-item"><i class="fab fa-line"></i>kaogm4651</div>
+                <div class="contact-item"><i class="fa-solid fa-cake-candles"></i>08/06/2543 (25 ปี)</div>
+                <div class="contact-item"><i class="fa-solid fa-venus-mars"></i>ชาย</div>
+                <div class="contact-item"><i class="fa-solid fa-id-badge"></i>โสด</div>
+                <div class="contact-item"><i class="fa-solid fa-passport"></i>ไทย</div>
+                <div class="contact-item"><i class="fa-solid fa-hand-holding-dollar"></i>เงินเดือนที่ต้องการ 20,000 บาท</div>
+            </div>
+            <table class="info-table">
+                <tr>
+                    <td class="label">ศาสนา</td>
+                    <td class="value">พุทธ</td>
+                </tr>
+                <tr>
+                    <td class="label">ส่วนสูง/น้ำหนัก</td>
+                    <td class="value">165 ซม. / 79 กก.</td>
+                </tr>
+                <tr>
+                    <td class="label">สถานภาพทางทหาร</td>
+                    <td class="value">ได้รับการยกเว้น/จบรักษาดินแดน</td>
+                </tr>
+                <tr>
+                    <td class="label">ยานพาหนะ</td>
+                    <td class="value">จักรยานยนต์ (มีใบขับขี่)</td>
+                </tr>
+                <tr>
+                    <td class="label">พร้อมเริ่มงาน</td>
+                    <td class="value">ได้ทันที</td>
+                </tr>
+                <tr>
+                    <td class="label">ยินดีทำงานต่างประเทศ</td>
+                    <td class="value">ได้</td>
+                </tr>
+            </table>
+        </div>
+        <!-- Section: งานที่ต้องการ -->
+        <div class="section">
+            <div class="section-title"><i class="fa-solid fa-network-wired"></i> งานที่ต้องการ</div>
+            <table class="info-table">
+                <tr>
+                    <td class="label">สายงานหลัก</td>
+                    <td class="value">ไอที</td>
+                </tr>
+                <tr>
+                    <td class="label">ตำแหน่งที่สนใจ</td>
+                    <td class="value">NOC Engineer, IT Support</td>
+                </tr>
+                <tr>
+                    <td class="label">พื้นที่/รูปแบบ</td>
+                    <td class="value">กรุงเทพมหานคร (ทุกเขต) / งานประจำ</td>
+                </tr>
+            </table>
+        </div>
+        <!-- Section: ประวัติการศึกษา -->
+        <div class="section">
+            <div class="section-title"><i class="fa-solid fa-graduation-cap"></i> ประวัติการศึกษา</div>
+            <div class="education-block">
+                <div class="ed-univ">มหาวิทยาลัยนเรศวร</div>
+                <div class="ed-degree">ปริญญาตรี, คณะศึกษาศาสตร์</div>
+                <div class="ed-detail">สาขา: เทคโนโลยีและสื่อสารการศึกษา | ปีจบ: 2566 | เกรดเฉลี่ย: 2.38</div>
+            </div>
+        </div>
+        <!-- Section: ประวัติการทำงาน/ฝึกงาน -->
+        <div class="section">
+            <div class="section-title"><i class="fa-solid fa-briefcase"></i> ประสบการณ์การทำงาน / ฝึกงาน</div>
+            <div class="job-block">
+                <div class="job-title">โสตทัศนูปกรณ์และงานเทคโนโลยีสารสนเทศ</div>
+                <div class="job-org">งานสารสนเทศ คณะสิ่งแวดล้อมและทรัพยากรศาสตร์ มหาวิทยาลัยมหิดล (ศาลายา)</div>
+                <div class="job-date">พฤศจิกายน 2565 – มีนาคม 2566</div>
+                <div class="job-desc">
+                    - ให้บริการด้านเทคโนโลยีสารสนเทศและแก้ไขปัญหาเครื่องคอมพิวเตอร์ อุปกรณ์โสตทัศนูปกรณ์ โปรแกรมและเครือข่าย<br>
+                    - ออกแบบและดีไซน์งานที่เกี่ยวข้องกับเทคโนโลยีเพื่อประโยชน์ต่อหน่วยงาน<br>
+                    - ส่งเสริมและให้คำปรึกษาการใช้เทคโนโลยีสารสนเทศแก่ผู้ปฏิบัติงาน
+                </div>
+            </div>
+        </div>
+        <!-- Section: ทักษะเฉพาะด้าน (Hard Skills) -->
+        <div class="section">
+            <div class="section-title"><i class="fa-solid fa-microchip"></i> ทักษะเฉพาะด้าน (Hard Skills)</div>
+            <div class="skills-list">
+                <span class="skills-item"><i class="fa-solid fa-pen-nib"></i>Capcut (กราฟิก/ตัดต่อ): ชำนาญ</span>
+                <span class="skills-item"><i class="fa-brands fa-microsoft"></i>MS PowerPoint: ชำนาญ</span>
+                <span class="skills-item"><i class="fa-brands fa-microsoft"></i>MS Word: ชำนาญ</span>
+                <span class="skills-item"><i class="fa-brands fa-microsoft"></i>MS Outlook: ชำนาญ</span>
+                <span class="skills-item"><i class="fa-solid fa-desktop"></i>Windows OS: ชำนาญ</span>
+                <span class="skills-item"><i class="fa-solid fa-network-wired"></i>NOC/Network: เริ่มต้น</span>
+                <span class="skills-item"><i class="fa-solid fa-robot"></i>ChatGPT/AI: ชำนาญ</span>
+                <span class="skills-item"><i class="fa-solid fa-robot"></i>Gemini AI: ชำนาญ</span>
+                <span class="skills-item"><i class="fa-brands fa-github"></i>GitHub Copilot: ชำนาญ</span>
+            </div>
+        </div>
+        <!-- Section: ทักษะเสริม (Soft Skills) -->
+        <div class="section">
+            <div class="section-title"><i class="fa-solid fa-person-rays"></i> ทักษะเสริม (Soft Skills)</div>
+            <div class="soft-skills-list">
+                <span class="soft-skills-item"><i class="fa-solid fa-users"></i>Collaboration</span>
+                <span class="soft-skills-item"><i class="fa-solid fa-comments"></i>Communication</span>
+                <span class="soft-skills-item"><i class="fa-solid fa-lightbulb"></i>Decision Making & Problem Solving</span>
+                <span class="soft-skills-item"><i class="fa-solid fa-handshake"></i>Negotiation</span>
+                <span class="soft-skills-item"><i class="fa-solid fa-clock"></i>Time Management</span>
+            </div>
+        </div>
+        <!-- Section: ข้อมูลอื่นๆ -->
+        <div class="section">
+            <div class="section-title"><i class="fa-solid fa-circle-info"></i> ข้อมูลอื่นๆ</div>
+            <table class="other-info-table">
+                <tr>
+                    <td class="label">ยานพาหนะ</td>
+                    <td class="value">จักรยานยนต์ (มีใบขับขี่)</td>
+                </tr>
+                <tr>
+                    <td class="label">ความสามารถในการขับขี่</td>
+                    <td class="value">จักรยานยนต์</td>
+                </tr>
+                <tr>
+                    <td class="label">พร้อมเริ่มงาน</td>
+                    <td class="value">ทันที</td>
+                </tr>
+                <tr>
+                    <td class="label">ยินดีทำงานต่างประเทศ</td>
+                    <td class="value">ได้</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        // Drag to move profile image inside the rectangle
+        const imgContainer = document.getElementById('profileImgContainer');
+        const profileImg = document.getElementById('profileImg');
+        const profileControls = document.getElementById('profileControls');
+        const zoomInBtn = document.getElementById('zoomInBtn');
+        const zoomOutBtn = document.getElementById('zoomOutBtn');
+        const saveProfileBtn = document.getElementById('saveProfileBtn');
+        let isDragging = false;
+        let startX, startY, imgX = 0, imgY = 0;
+        let zoom = 1;
+        let baseWidth = 100, baseHeight = 100; // percent for rectangle
+
+        imgContainer.addEventListener('mousedown', function(e) {
+            if (profileControls.style.display === "none") return;
+            isDragging = true;
+            imgContainer.style.cursor = 'grabbing';
+            startX = e.clientX;
+            startY = e.clientY;
+            document.body.style.userSelect = 'none';
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (!isDragging) return;
+            let dx = e.clientX - startX;
+            let dy = e.clientY - startY;
+            let newX = imgX + dx;
+            let newY = imgY + dy;
+
+            // Limit move so image doesn't go too far outside the container
+            const maxOffset = 0.2;
+            const containerW = imgContainer.offsetWidth;
+            const containerH = imgContainer.offsetHeight;
+            const imgW = profileImg.offsetWidth;
+            const imgH = profileImg.offsetHeight;
+            const limitX = Math.max((imgW - containerW) / 2 + containerW*maxOffset, 0);
+            const limitY = Math.max((imgH - containerH) / 2 + containerH*maxOffset, 0);
+
+            newX = Math.max(-limitX, Math.min(limitX, newX));
+            newY = Math.max(-limitY, Math.min(limitY, newY));
+
+            profileImg.style.left = `${newX}px`;
+            profileImg.style.top = `${newY}px`;
+        });
+
+        document.addEventListener('mouseup', function(e) {
+            if (!isDragging) return;
+            isDragging = false;
+            imgContainer.style.cursor = 'grab';
+            imgX = parseInt(profileImg.style.left) || 0;
+            imgY = parseInt(profileImg.style.top) || 0;
+            document.body.style.userSelect = '';
+        });
+
+        // Touch support
+        imgContainer.addEventListener('touchstart', function(e) {
+            if (profileControls.style.display === "none") return;
+            isDragging = true;
+            imgContainer.style.cursor = 'grabbing';
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        });
+
+        document.addEventListener('touchmove', function(e) {
+            if (!isDragging) return;
+            let dx = e.touches[0].clientX - startX;
+            let dy = e.touches[0].clientY - startY;
+            let newX = imgX + dx;
+            let newY = imgY + dy;
+
+            const maxOffset = 0.2;
+            const containerW = imgContainer.offsetWidth;
+            const containerH = imgContainer.offsetHeight;
+            const imgW = profileImg.offsetWidth;
+            const imgH = profileImg.offsetHeight;
+            const limitX = Math.max((imgW - containerW) / 2 + containerW*maxOffset, 0);
+            const limitY = Math.max((imgH - containerH) / 2 + containerH*maxOffset, 0);
+
+            newX = Math.max(-limitX, Math.min(limitX, newX));
+            newY = Math.max(-limitY, Math.min(limitY, newY));
+
+            profileImg.style.left = `${newX}px`;
+            profileImg.style.top = `${newY}px`;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            if (!isDragging) return;
+            isDragging = false;
+            imgContainer.style.cursor = 'grab';
+            imgX = parseInt(profileImg.style.left) || 0;
+            imgY = parseInt(profileImg.style.top) || 0;
+        });
+
+        // Zoom in/out functionality
+        function updateImgZoom() {
+            profileImg.style.width = (baseWidth * zoom) + '%';
+            profileImg.style.height = (baseHeight * zoom) + '%';
+        }
+
+        zoomInBtn.addEventListener('click', function() {
+            zoom = Math.min(zoom + 0.1, 2.2);
+            updateImgZoom();
+        });
+        zoomOutBtn.addEventListener('click', function() {
+            zoom = Math.max(zoom - 0.1, 0.6);
+            updateImgZoom();
+        });
+
+        // Initialize
+        updateImgZoom();
+
+        // Save functionality: lock everything and hide controls
+        saveProfileBtn.addEventListener('click', function() {
+            profileControls.style.display = "none";
+            imgContainer.style.cursor = "default";
+        });
+    </script>
+</body>
+</html>
