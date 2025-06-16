@@ -57,39 +57,7 @@
             top: 0;
             user-select: none;
             pointer-events: none;
-            transition: filter 0.2s, width 0.2s, height 0.2s;
             background: #23263a;
-        }
-        .profile-controls {
-            position: absolute;
-            bottom: 8px;
-            right: 12px;
-            z-index: 3;
-            display: flex;
-            gap: 8px;
-            background: rgba(35,38,58,0.88);
-            border-radius: 18px;
-            padding: 3px 10px 3px 10px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.14);
-            transition: opacity 0.2s;
-        }
-        .profile-controls button {
-            background: #38b6ff;
-            border: none;
-            border-radius: 50%;
-            width: 28px;
-            height: 28px;
-            color: #fff;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: background 0.15s;
-            outline: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .profile-controls button:hover {
-            background: #259be6;
         }
         @media (max-width: 720px) {
             .resume-wrapper {
@@ -268,11 +236,6 @@
             <div class="profile-img-container" id="profileImgContainer">
                 <img id="profileImg" src="4953449.png" alt="รูปโปรไฟล์ Amornchest" draggable="false">
             </div>
-            <div class="profile-controls" id="profileControls">
-                <button id="zoomOutBtn" title="ย่อรูปโปรไฟล์"><i class="fas fa-minus"></i></button>
-                <button id="zoomInBtn" title="ขยายรูปโปรไฟล์"><i class="fas fa-plus"></i></button>
-                <button id="saveProfileBtn" title="บันทึกรูปโปรไฟล์"><i class="fas fa-check"></i></button>
-            </div>
         </div>
         <!-- Header -->
         <div class="header">
@@ -418,17 +381,10 @@
         // Drag to move profile image inside the rectangle
         const imgContainer = document.getElementById('profileImgContainer');
         const profileImg = document.getElementById('profileImg');
-        const profileControls = document.getElementById('profileControls');
-        const zoomInBtn = document.getElementById('zoomInBtn');
-        const zoomOutBtn = document.getElementById('zoomOutBtn');
-        const saveProfileBtn = document.getElementById('saveProfileBtn');
         let isDragging = false;
         let startX, startY, imgX = 0, imgY = 0;
-        let zoom = 1;
-        let baseWidth = 100, baseHeight = 100; // percent for rectangle
 
         imgContainer.addEventListener('mousedown', function(e) {
-            if (profileControls.style.display === "none") return;
             isDragging = true;
             imgContainer.style.cursor = 'grabbing';
             startX = e.clientX;
@@ -470,7 +426,6 @@
 
         // Touch support
         imgContainer.addEventListener('touchstart', function(e) {
-            if (profileControls.style.display === "none") return;
             isDragging = true;
             imgContainer.style.cursor = 'grabbing';
             startX = e.touches[0].clientX;
@@ -505,30 +460,6 @@
             imgContainer.style.cursor = 'grab';
             imgX = parseInt(profileImg.style.left) || 0;
             imgY = parseInt(profileImg.style.top) || 0;
-        });
-
-        // Zoom in/out functionality
-        function updateImgZoom() {
-            profileImg.style.width = (baseWidth * zoom) + '%';
-            profileImg.style.height = (baseHeight * zoom) + '%';
-        }
-
-        zoomInBtn.addEventListener('click', function() {
-            zoom = Math.min(zoom + 0.1, 2.2);
-            updateImgZoom();
-        });
-        zoomOutBtn.addEventListener('click', function() {
-            zoom = Math.max(zoom - 0.1, 0.6);
-            updateImgZoom();
-        });
-
-        // Initialize
-        updateImgZoom();
-
-        // Save functionality: lock everything and hide controls
-        saveProfileBtn.addEventListener('click', function() {
-            profileControls.style.display = "none";
-            imgContainer.style.cursor = "default";
         });
     </script>
 </body>
